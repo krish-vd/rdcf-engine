@@ -91,12 +91,13 @@ claude
 ## File Structure
 
 ```
-Claude Project/
-├── agents/
-│   └── reverse-dcf.md       # Agent definition + full system prompt
-├── skills/
-│   ├── rdcf-run.md          # /rdcf command handler
-│   └── rdcf-quick.md        # /rdcf-quick command handler
+rdcf-engine/
+├── .claude/
+│   ├── agents/
+│   │   └── reverse-dcf.md   # Agent definition + full system prompt
+│   └── skills/
+│       ├── rdcf-run.md      # /rdcf command handler
+│       └── rdcf-quick.md    # /rdcf-quick command handler
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin manifest
 └── README.md

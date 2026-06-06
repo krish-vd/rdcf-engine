@@ -7,7 +7,7 @@
   "agents": [
     {
       "name": "reverse-dcf",
-      "file": "agents/reverse-dcf.md",
+      "file": ".claude/agents/reverse-dcf.md",
       "description": "Senior equity research analyst agent. Runs full 14-section reverse DCF analysis including WACC derivation, implied growth/margin assumptions, sensitivity matrices, peer benchmarking, FCF quality, ROIC bridge, variant perception, and one-page IC memo."
     }
   ],
@@ -15,13 +15,13 @@
     {
       "name": "rdcf-run",
       "command": "rdcf",
-      "file": "skills/rdcf-run.md",
+      "file": ".claude/skills/rdcf-run.md",
       "description": "Full institutional reverse DCF analysis. Usage: /rdcf [TICKER]"
     },
     {
       "name": "rdcf-quick",
       "command": "rdcf-quick",
-      "file": "skills/rdcf-quick.md",
+      "file": ".claude/skills/rdcf-quick.md",
       "description": "Fast 3-section screening snapshot. Usage: /rdcf-quick [TICKER]"
     }
   ],
