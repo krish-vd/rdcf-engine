@@ -1,0 +1,39 @@
+{
+  "name": "rdcf-engine",
+  "display_name": "RDCF Engine",
+  "version": "1.0.0",
+  "description": "Institutional-grade reverse DCF analysis plugin. Back-solves from current market price to implied operating assumptions, stress-tests feasibility against history and peers, and produces a probability-weighted IC memo.",
+  "author": "Krish Desai",
+  "agents": [
+    {
+      "name": "reverse-dcf",
+      "file": "agents/reverse-dcf.md",
+      "description": "Senior equity research analyst agent. Runs full 14-section reverse DCF analysis including WACC derivation, implied growth/margin assumptions, sensitivity matrices, peer benchmarking, FCF quality, ROIC bridge, variant perception, and one-page IC memo."
+    }
+  ],
+  "skills": [
+    {
+      "name": "rdcf-run",
+      "command": "rdcf",
+      "file": "skills/rdcf-run.md",
+      "description": "Full institutional reverse DCF analysis. Usage: /rdcf [TICKER]"
+    },
+    {
+      "name": "rdcf-quick",
+      "command": "rdcf-quick",
+      "file": "skills/rdcf-quick.md",
+      "description": "Fast 3-section screening snapshot. Usage: /rdcf-quick [TICKER]"
+    }
+  ],
+  "tags": [
+    "equity-research",
+    "finance",
+    "valuation",
+    "dcf",
+    "investing"
+  ],
+  "requirements": {
+    "tools": ["WebSearch", "Read"],
+    "model": "claude-sonnet-4-6"
+  }
+}
