@@ -1,87 +1,17 @@
 # RDCF Engine
 
-Institutional-grade reverse DCF analyst. Back-solves from the current stock price to the implied operating assumptions baked in, stress-tests them against company history, peers, and consensus, and produces a probability-weighted investment memo.
-
-Works in two ways:
-- **Claude Desktop** — chat naturally, no terminal needed
-- **Claude Code CLI** — slash commands `/rdcf` and `/rdcf-quick`
+Institutional-grade reverse DCF analyst for Claude Code. Back-solves from the current stock price to the implied operating assumptions baked in, stress-tests them against company history, peers, and consensus, and produces a probability-weighted investment memo.
 
 ---
 
-## Option A — Claude Desktop (recommended for most users)
-
-No terminal required. Just chat with Claude Desktop after a one-time setup.
-
-### 1. Clone the repo and install dependencies
-
-```bash
-git clone https://github.com/krish-vd/rdcf-engine
-cd rdcf-engine/mcp-server
-npm install
-```
-
-### 2. Add to Claude Desktop config
-
-Open this file (create it if it doesn't exist):
-
-- **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
-
-Add the `mcpServers` block (replace the path with wherever you cloned the repo):
-
-```json
-{
-  "mcpServers": {
-    "rdcf-engine": {
-      "command": "node",
-      "args": ["/absolute/path/to/rdcf-engine/mcp-server/server.js"]
-    }
-  }
-}
-```
-
-**Mac example:**
-```json
-{
-  "mcpServers": {
-    "rdcf-engine": {
-      "command": "node",
-      "args": ["/Users/YOUR_USERNAME/rdcf-engine/mcp-server/server.js"]
-    }
-  }
-}
-```
-
-### 3. Restart Claude Desktop
-
-Fully quit and reopen. Then just ask:
-
-> "Run a reverse DCF on AAPL"
-
-> "Quick DCF check on NVDA"
-
-> "Analyze MSFT using reverse DCF"
-
-Claude fetches live financial data automatically and produces the full analysis.
-
----
-
-## Option B — Claude Code CLI
-
-For users who prefer the terminal.
-
-```bash
-git clone https://github.com/krish-vd/rdcf-engine ~/Documents/Claude\ Project
-cd ~/Documents/Claude\ Project
-claude
-```
-
-Then use slash commands:
+## Commands
 
 | Command | Description |
 |---|---|
 | `/rdcf [TICKER]` | Full 14-section institutional analysis |
 | `/rdcf-quick [TICKER]` | Fast 3-section screening snapshot |
+
+### Examples
 
 ```
 /rdcf NVDA
@@ -92,9 +22,25 @@ Then use slash commands:
 
 ---
 
+## Installation
+
+```bash
+git clone https://github.com/krish-vd/rdcf-engine ~/Documents/Claude\ Project
+cd ~/Documents/Claude\ Project
+claude
+```
+
+Then run your first analysis:
+
+```
+/rdcf AAPL
+```
+
+---
+
 ## What It Produces
 
-### Full Analysis — 14 Sections
+### `/rdcf [TICKER]` — Full Analysis (14 Sections)
 
 1. **Company Snapshot & Market Pricing** — EV anchoring, capital structure confirmation
 2. **Historical Financial Foundation** — 3-year P&L, FCF, margin trend
@@ -111,7 +57,7 @@ Then use slash commands:
 13. **Conviction & Risk Framework** — Probability-weighted expected value, risk table, catalysts
 14. **One-Page IC Memo** — Rating, price target, market-implied narrative, variant view, sizing
 
-### Quick Snapshot — 3 Sections
+### `/rdcf-quick [TICKER]` — Snapshot (3 Sections)
 
 1. Market pricing snapshot (EV, FCF yield, trading multiples)
 2. Implied assumptions vs. history with achievability verdict (Achievable / Aggressive / Heroic)
@@ -137,8 +83,8 @@ Then use slash commands:
 
 ## Requirements
 
-- **Claude Desktop** path: Node.js 18+, Claude Desktop app
-- **Claude Code** path: Claude Code CLI, model `claude-sonnet-4-6` or later
+- Claude Code (CLI)
+- Model: `claude-sonnet-4-6` or later
 
 ---
 
@@ -151,12 +97,9 @@ rdcf-engine/
 │   │   └── reverse-dcf.md        # Agent definition + full system prompt
 │   └── skills/
 │       ├── rdcf/
-│       │   └── SKILL.md          # /rdcf command (Claude Code)
+│       │   └── SKILL.md          # /rdcf command
 │       └── rdcf-quick/
-│           └── SKILL.md          # /rdcf-quick command (Claude Code)
-├── mcp-server/
-│   ├── server.js                 # MCP server (Claude Desktop)
-│   └── package.json
+│           └── SKILL.md          # /rdcf-quick command
 └── README.md
 ```
 
